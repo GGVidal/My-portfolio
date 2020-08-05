@@ -1,16 +1,15 @@
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu, Breadcrumb, Avatar, Row, Col } from 'antd';
 import {
   DesktopOutlined,
-  PieChartOutlined,
+  OrderedListOutlined,
   FileOutlined,
-  FacebookOutlined,
   UserOutlined,
   LinkedinOutlined,
   GithubOutlined,
 } from '@ant-design/icons';
 import React, { useState } from 'react';
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 const App = () => {
@@ -22,14 +21,24 @@ const App = () => {
   };
   return (
     <Layout style={{ minHeight: '100vh' }}>
-      <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
+      <Sider
+        collapsible
+        collapsed={collapsed}
+        onCollapse={onCollapse}
+        width={250}
+      >
+        <Row justify="center" style={{ marginTop: 20 }}>
+          <Col>
+            <Avatar size={128} src={require('../src/assets/gabriel.jpeg')} />
+          </Col>
+        </Row>
         <div className="logo" />
-        <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
-          <Menu.Item key="1" icon={<PieChartOutlined />}>
-            Option 1
+        <Menu theme="dark" mode="inline">
+          <Menu.Item key="1" icon={<OrderedListOutlined />}>
+            Timeline
           </Menu.Item>
           <Menu.Item key="2" icon={<DesktopOutlined />}>
-            Option 2
+            About
           </Menu.Item>
           <Menu.Item key="9" icon={<FileOutlined />} />
           <SubMenu key="sub1" icon={<UserOutlined />} title="Social Medias">
@@ -45,7 +54,6 @@ const App = () => {
         </Menu>
       </Sider>
       <Layout className="site-layout">
-        <Header className="site-layout-background" style={{ padding: 0 }} />
         <Content style={{ margin: '0 16px' }}>
           <Breadcrumb style={{ margin: '16px 0' }}>
             <Breadcrumb.Item>User</Breadcrumb.Item>
