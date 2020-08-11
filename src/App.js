@@ -1,4 +1,13 @@
-import { Layout, Menu, Breadcrumb, Avatar, Row, Col } from 'antd';
+import {
+  Layout,
+  Menu,
+  Breadcrumb,
+  Avatar,
+  Row,
+  Col,
+  Tag,
+  Typography,
+} from 'antd';
 import {
   DesktopOutlined,
   OrderedListOutlined,
@@ -6,11 +15,15 @@ import {
   UserOutlined,
   LinkedinOutlined,
   GithubOutlined,
+  MailOutlined,
 } from '@ant-design/icons';
 import React, { useState } from 'react';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { Carousel } from 'react-responsive-carousel';
 
 const { Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
+const { Title } = Typography;
 
 const App = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -31,6 +44,16 @@ const App = () => {
           <Col>
             <Avatar size={128} src={require('../src/assets/gabriel.jpeg')} />
           </Col>
+        </Row>
+        <Row justify="center" style={{ marginTop: 20 }}>
+          <Title style={{ color: '#E9ECEC' }} level={4}>
+            Gabriel Vidal Gondim
+          </Title>
+        </Row>
+        <Row justify="center">
+          <Tag icon={<MailOutlined />} color="#1B1558">
+            gabrielvidalgondim@gmail.com
+          </Tag>
         </Row>
         <div className="logo" />
         <Menu theme="dark" mode="inline">
@@ -63,7 +86,20 @@ const App = () => {
             className="site-layout-background"
             style={{ padding: 24, minHeight: 360 }}
           >
-            Bill is a cat.
+            <Carousel>
+              <div>
+                <img src={require('../src/assets/gabriel.jpeg')} />
+                <p className="legend">Legend 1</p>
+              </div>
+              <div>
+                <img src={require('../src/assets/gabriel.jpeg')} />
+                <p className="legend">Legend 2</p>
+              </div>
+              <div>
+                <img src={require('../src/assets/gabriel.jpeg')} />
+                <p className="legend">Legend 3</p>
+              </div>
+            </Carousel>
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
