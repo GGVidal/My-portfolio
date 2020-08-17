@@ -1,12 +1,13 @@
 import {
   Layout,
   Menu,
-  Breadcrumb,
   Avatar,
   Row,
   Col,
   Tag,
   Typography,
+  Divider,
+  Space,
 } from 'antd';
 import {
   DesktopOutlined,
@@ -16,6 +17,7 @@ import {
   LinkedinOutlined,
   GithubOutlined,
   MailOutlined,
+  PhoneOutlined,
 } from '@ant-design/icons';
 import React, { useState } from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -23,7 +25,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 const { Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 const App = () => {
   const [collapsed, setCollapsed] = useState(false);
@@ -51,8 +53,13 @@ const App = () => {
           </Title>
         </Row>
         <Row justify="center">
-          <Tag icon={<MailOutlined />} color="#1B1558">
+          <Tag icon={<MailOutlined />} color="#3b5999">
             gabrielvidalgondim@gmail.com
+          </Tag>
+        </Row>
+        <Row justify="center" style={{ marginTop: 5 }}>
+          <Tag icon={<PhoneOutlined />} color="#3b5999">
+            +55-085-999583690
           </Tag>
         </Row>
         <div className="logo" />
@@ -78,28 +85,39 @@ const App = () => {
       </Sider>
       <Layout className="site-layout">
         <Content style={{ margin: '0 16px' }}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
           <div
             className="site-layout-background"
             style={{ padding: 24, minHeight: 360 }}
           >
-            <Carousel>
-              <div>
-                <img src={require('../src/assets/gabriel.jpeg')} />
-                <p className="legend">Legend 1</p>
-              </div>
-              <div>
-                <img src={require('../src/assets/gabriel.jpeg')} />
-                <p className="legend">Legend 2</p>
-              </div>
-              <div>
-                <img src={require('../src/assets/gabriel.jpeg')} />
-                <p className="legend">Legend 3</p>
-              </div>
-            </Carousel>
+            <img
+              src={require('./assets/code2.jpg')}
+              style={{
+                border: '1px solid #ddd',
+                borderRadius: 4,
+                padding: 2,
+                width: 1650,
+              }}
+            />
+            <Divider />
+            <Space size="middle" direction="vertical">
+              <Title type="secondary" level={4} style={{ fontSize: 18 }}>
+                About me
+              </Title>
+              <Title strong level={3}>Who am I?</Title>
+              <Text>
+                I'm a Computer Science student from Universidade de Fortaleza
+                that work as a full stack developer. I'm a developer since july
+                2018. I love exploring new technologies that could help me
+                during my daily life. I have a special love for some UX/UI
+                principles and bots.
+              </Text>
+            </Space>
+            <Space direction="vertical" style={{ marginTop: 80 }}>
+              <Title type="secondary" level={4} style={{ fontSize: 18 }}>
+                What I do?
+              </Title>
+              <Title strong level={3}>Here are some of my expertises</Title>
+            </Space>
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>
