@@ -1,88 +1,24 @@
-import {
-  Layout,
-  Menu,
-  Avatar,
-  Row,
-  Col,
-  Tag,
-  Typography,
-  Divider,
-  Space,
-} from 'antd';
-import {
-  DesktopOutlined,
-  OrderedListOutlined,
-  FileOutlined,
-  UserOutlined,
-  LinkedinOutlined,
-  GithubOutlined,
-  MailOutlined,
-  PhoneOutlined,
-} from '@ant-design/icons';
-import React, { useState } from 'react';
+import { Layout, Typography, Divider, Space } from 'antd';
+import React from 'react';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import { Carousel } from 'react-responsive-carousel';
+import { Rate } from 'antd';
+import { FrownOutlined, MehOutlined, SmileOutlined } from '@ant-design/icons';
 
-const { Content, Footer, Sider } = Layout;
-const { SubMenu } = Menu;
+import Sidemenu from './components/SideMenu';
+const { Content, Footer } = Layout;
 const { Title, Text } = Typography;
 
+const customIcons = {
+  1: <FrownOutlined />,
+  2: <FrownOutlined />,
+  3: <MehOutlined />,
+  4: <SmileOutlined />,
+  5: <SmileOutlined />,
+};
 const App = () => {
-  const [collapsed, setCollapsed] = useState(false);
-
-  const onCollapse = (collapsed) => {
-    console.log(collapsed);
-    setCollapsed(collapsed);
-  };
   return (
     <Layout style={{ minHeight: '100vh' }}>
-      <Sider
-        collapsible
-        collapsed={collapsed}
-        onCollapse={onCollapse}
-        width={250}
-      >
-        <Row justify="center" style={{ marginTop: 20 }}>
-          <Col>
-            <Avatar size={128} src={require('../src/assets/gabriel.jpeg')} />
-          </Col>
-        </Row>
-        <Row justify="center" style={{ marginTop: 20 }}>
-          <Title style={{ color: '#E9ECEC' }} level={4}>
-            Gabriel Vidal Gondim
-          </Title>
-        </Row>
-        <Row justify="center">
-          <Tag icon={<MailOutlined />} color="#3b5999">
-            gabrielvidalgondim@gmail.com
-          </Tag>
-        </Row>
-        <Row justify="center" style={{ marginTop: 5 }}>
-          <Tag icon={<PhoneOutlined />} color="#3b5999">
-            +55-085-999583690
-          </Tag>
-        </Row>
-        <div className="logo" />
-        <Menu theme="dark" mode="inline">
-          <Menu.Item key="1" icon={<OrderedListOutlined />}>
-            Timeline
-          </Menu.Item>
-          <Menu.Item key="2" icon={<DesktopOutlined />}>
-            About
-          </Menu.Item>
-          <Menu.Item key="9" icon={<FileOutlined />} />
-          <SubMenu key="sub1" icon={<UserOutlined />} title="Social Medias">
-            <Menu.Item key="2" icon={<LinkedinOutlined />}>
-              <a href="https://www.linkedin.com/in/gabriel-gondim-584477157/">
-                LinkedIn
-              </a>
-            </Menu.Item>
-            <Menu.Item key="3" icon={<GithubOutlined />}>
-              <a href="https://github.com/GGVidal">Github</a>
-            </Menu.Item>
-          </SubMenu>
-        </Menu>
-      </Sider>
+      <Sidemenu />
       <Layout className="site-layout">
         <Content style={{ margin: '0 16px' }}>
           <div
@@ -91,19 +27,22 @@ const App = () => {
           >
             <img
               src={require('./assets/code2.jpg')}
+              alt="GABRIEL"
               style={{
                 border: '1px solid #ddd',
-                borderRadius: 4,
+                borderRadius: 10,
                 padding: 2,
-                width: 1650,
+                width: 1150,
               }}
             />
             <Divider />
             <Space size="middle" direction="vertical">
-              <Title type="secondary" level={4} style={{ fontSize: 18 }}>
+              <Title strong level={3}>
                 About me
               </Title>
-              <Title strong level={3}>Who am I?</Title>
+              <Title level={4} type="secondary">
+                Who am I?
+              </Title>
               <Text>
                 I'm a Computer Science student from Universidade de Fortaleza
                 that work as a full stack developer. I'm a developer since july
@@ -112,11 +51,22 @@ const App = () => {
                 principles and bots.
               </Text>
             </Space>
-            <Space direction="vertical" style={{ marginTop: 80 }}>
-              <Title type="secondary" level={4} style={{ fontSize: 18 }}>
+            <Divider />
+            <Space direction="vertical" style={{ marginTop: 20 }}>
+              <Title strong level={3}>
                 What I do?
               </Title>
-              <Title strong level={3}>Here are some of my expertises</Title>
+              <Title strong level={4} type="secondary">
+                Here are some of my expertises
+              </Title>
+              <Rate
+                defaultValue={5}
+                disabled
+                character={({ index }) => {
+                  return customIcons[index + 1];
+                }}
+              />
+              <Text>Javascript</Text>
             </Space>
           </div>
         </Content>
