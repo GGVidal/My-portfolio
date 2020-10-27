@@ -27,6 +27,7 @@ const App = () => {
           >
             <img
               src={require('./assets/code2.jpg')}
+              alt="GABRIEL"
               style={{
                 border: '1px solid #ddd',
                 borderRadius: 10,
